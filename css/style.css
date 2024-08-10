@@ -251,6 +251,11 @@ body {
     margin-top: 1rem;
     font-size: 2rem;
   }
+
+.about .row .content p {
+    font-size: 1.6rem;
+  }
+  
 }
 
 /* mobile */
