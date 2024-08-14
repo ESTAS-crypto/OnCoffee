@@ -18,6 +18,10 @@ body {
   color: #fff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /*nav bar*/
 
 .navbar {
@@ -298,6 +302,7 @@ body {
   margin: auto;
   font-weight: 100;
   line-height: 1.6;
+  font-size: 1.2rem;
 }
 
 .menu .row {
@@ -467,7 +472,7 @@ footer .credit a {
 .modal {
   display: none;
   position: fixed;
-  z-index: 9999;
+  z-index: 8888;
   left: 0;
   top: 0;
   width: 100%;
@@ -526,11 +531,12 @@ footer .credit a {
 .modal-content a {
   display: flex;
   gap: 1rem;
-  width: 12rem;
+  width: 14rem;
   background-color: var(--primary);
   color: #fff;
   margin-top: 1rem;
   padding: 1rem 1.6rem;
+  font-size: 1.2rem;
 }
 
 .modal .product-stars {
@@ -565,7 +571,7 @@ footer .credit a {
 
 /* tablet */
 
-@media (max-width: 758px) {
+@media (max-width: 768px) {
   html {
     font-size: 62%;
   }
