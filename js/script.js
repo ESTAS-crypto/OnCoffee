@@ -1,65 +1,67 @@
-// Toggle class active menu
+// Toggle class active untuk hamburger menu
 const navbarNav = document.querySelector(".navbar-nav");
-const hamburgerMenu = document.querySelector("#hamburger-menu");
-const searchForm = document.querySelector(".search-form");
-const searchButton = document.querySelector("#search-button");
-const shoppingCart = document.querySelector(".shopping-cart");
-const shoppingCartButton = document.querySelector("#shopping-cart-button");
-const itemsDetailModal = document.querySelector("#items-detail-modal");
-const itemsDetailButtons = document.querySelectorAll(".items-detail-button");
-const closeModalButton = document.querySelector(".modal .close-icon");
-
-// Event listener untuk hamburger menu
-hamburgerMenu.addEventListener("click", () => {
+// ketika hamburger menu di klik
+document.querySelector("#hamburger-menu").onclick = () => {
   navbarNav.classList.toggle("active");
-});
+};
 
-// Event listener untuk search button
-searchButton.addEventListener("click", (e) => {
-  e.preventDefault();
+// Toggle class active untuk search form
+const searchForm = document.querySelector(".search-form");
+const searchBox = document.querySelector("#search-box");
+
+document.querySelector("#search-button").onclick = (e) => {
   searchForm.classList.toggle("active");
-  searchForm.querySelector("input").focus();
-});
-
-// Event listener untuk shopping cart button
-shoppingCartButton.addEventListener("click", (e) => {
+  searchBox.focus();
   e.preventDefault();
-  shoppingCart.classList.toggle("active");
-});
+};
 
-// Klik di luar elemen untuk menutup menu, search form, dan shopping cart
-document.addEventListener("click", (e) => {
-  if (!hamburgerMenu.contains(e.target) && !navbarNav.contains(e.target)) {
+// Toggle class active untuk shopping cart
+const shoppingCart = document.querySelector(".shopping-cart");
+document.querySelector("#shopping-cart-button").onclick = (e) => {
+  shoppingCart.classList.toggle("active");
+  e.preventDefault();
+};
+
+// Klik di luar elemen
+const hm = document.querySelector("#hamburger-menu");
+const sb = document.querySelector("#search-button");
+const sc = document.querySelector("#shopping-cart-button");
+
+document.addEventListener("click", function (e) {
+  if (!hm.contains(e.target) && !navbarNav.contains(e.target)) {
     navbarNav.classList.remove("active");
+    e.preventDefault();
   }
-  if (!searchButton.contains(e.target) && !searchForm.contains(e.target)) {
+
+  if (!sb.contains(e.target) && !searchForm.contains(e.target)) {
     searchForm.classList.remove("active");
   }
-  if (
-    !shoppingCartButton.contains(e.target) &&
-    !shoppingCart.contains(e.target)
-  ) {
+
+  if (!sc.contains(e.target) && !shoppingCart.contains(e.target)) {
     shoppingCart.classList.remove("active");
   }
 });
 
-// Modal box
-itemsDetailButtons.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
+// Modal Box
+const itemDetailModal = document.querySelector("#item-detail-modal");
+const itemDetailButtons = document.querySelectorAll(".item-detail-button");
+
+itemDetailButtons.forEach((btn) => {
+  btn.onclick = (e) => {
+    itemDetailModal.style.display = "flex";
     e.preventDefault();
-    itemsDetailModal.style.display = "flex";
-  });
+  };
 });
 
-// Klik tombol close modal
-closeModalButton.addEventListener("click", (e) => {
+// klik tombol close modal
+document.querySelector(".modal .close-icon").onclick = (e) => {
+  itemDetailModal.style.display = "none";
   e.preventDefault();
-  itemsDetailModal.style.display = "none";
-});
+};
 
-// Klik di luar modal untuk menutupnya
-window.addEventListener("click", (e) => {
-  if (e.target === itemsDetailModal) {
-    itemsDetailModal.style.display = "none";
+// klik di luar modal
+window.onclick = (e) => {
+  if (e.target === itemDetailModal) {
+    itemDetailModal.style.display = "none";
   }
-});
+};
