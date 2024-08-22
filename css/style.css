@@ -204,13 +204,13 @@ html {
 
 .hero .mask-container {
   position: absolute;
-  background: salmon;
+  /*background: salmon;*/
   inset: 0;
   /*foto svg erorr*/
+  mask-image: url("../img/header-bg.svg");
   mask-repeat: no-repeat;
   mask-size: cover;
   mask-position: center;
-  position: relative;
 }
 
 .hero .content {
@@ -223,7 +223,7 @@ html {
 }
 
 .hero .content h1 {
-  font-size: 5em;
+  font-size: 4em;
   color: #fff;
   text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
   line-height: 1.2;
