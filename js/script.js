@@ -31,7 +31,6 @@ const sc = document.querySelector("#shopping-cart-button");
 document.addEventListener("click", function (e) {
   if (!hm.contains(e.target) && !navbarNav.contains(e.target)) {
     navbarNav.classList.remove("active");
-    e.preventDefault();
   }
 
   if (!sb.contains(e.target) && !searchForm.contains(e.target)) {
