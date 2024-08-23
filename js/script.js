@@ -65,4 +65,3 @@ window.onclick = (e) => {
     itemsDetailModal.style.display = "none";
   }
 };
-
