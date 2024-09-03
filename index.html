@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="with=device-width, initial-scale=1.0" />
@@ -9,10 +10,7 @@
     <!--Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap" rel="stylesheet" />
 
     <!--Icons-->
     <script src="https://unpkg.com/feather-icons"></script>
@@ -20,50 +18,46 @@
     <link rel="stylesheet" href="css/style.css" />
 
     <!--alpine-js-->
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
-    ></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <!--app alipine-->
-    <script src="src/app.js"></script>
-  </head>
+    <script src="src/app.js" async></script>
+</head>
 
-  <body>
+<body>
     <!-- navbar start -->
     <nav class="navbar" x-data>
-      <a href="#" class="navbar-logo">On<span>Coffee</span>.</a>
+        <a href="#" class="navbar-logo">On<span>Coffee</span>.</a>
 
-      <div class="navbar-nav">
-        <a href="#home">Home</a>
-        <a href="#about">Tentang kami</a>
-        <a href="#menu">Menu</a>
-        <a href="#contact">Kontak</a>
-      </div>
+        <div class="navbar-nav">
+            <a href="#home">Home</a>
+            <a href="#about">Tentang kami</a>
+            <a href="#menu">Menu</a>
+            <a href="#contact">Kontak</a>
+        </div>
 
-      <div class="navbar-extra">
-        <a href="#" id="search-button"> <i data-feather="search"></i></a>
-        <a href="#" id="shopping-cart-button"
-          ><i data-feather="shopping-cart"></i>
+        <div class="navbar-extra">
+            <a href="#" id="search-button"> <i data-feather="search"></i></a>
+            <a href="#" id="shopping-cart-button"><i data-feather="shopping-cart"></i>
           <span
             class="quantity-badge"
             x-show="$store.cart.quantity"
             x-text="$store.cart.quantity"
           ></span>
         </a>
-        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
-      </div>
+            <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+        </div>
 
-      <!-- search form start -->
-      <div class="search-form">
-        <input type="search" id="search-box" placeholder="search here..." />
-        <label for="search-box"><i data-feather="search"></i></label>
-      </div>
-      <!-- search form end -->
+        <!-- search form start -->
+        <div class="search-form">
+            <input type="search" id="search-box" placeholder="search here..." />
+            <label for="search-box"><i data-feather="search"></i></label>
+        </div>
+        <!-- search form end -->
 
-      <!--sopping cart start-->
-      <div class="shopping-cart">
-        <template x-for="(item,index) in $store.cart.items" x-keys="index">
+        <!--sopping cart start-->
+        <div class="shopping-cart">
+            <template x-for="(item,index) in $store.cart.items" x-keys="index">
           <div class="cart-items">
             <img :src="`img/menu/${item.img}`" :alt="item.name" />
             <div class="items-detail">
@@ -81,92 +75,84 @@
             </div>
           </div>
         </template>
-        <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem">
-          Cart is Empty
-        </h4>
-        <h4 x-show="$store.cart.items.length">
-          Total : <span x-text="rupiah($store.cart.total)"></span>
-        </h4>
+            <h4 x-show="!$store.cart.items.length" style="margin-top: 1rem">
+                Cart is Empty
+            </h4>
+            <h4 x-show="$store.cart.items.length">
+                Total : <span x-text="rupiah($store.cart.total)"></span>
+            </h4>
 
-        <div class="form-container" x-show="$store.cart.items.length">
-          <form action="" id="checkoutForm">
-            <h5>Custommer Detail</h5>
-            <label for="name">
+            <div class="form-container" x-show="$store.cart.items.length">
+                <form action="" id="checkoutForm">
+                    <input type="hidden" name="items" x-model="JSON.stringify($store.cart.items)" />
+                    <input type="hidden" name="total" x-model="$store.cart.total" />
+                    <h5>Custommer Detail</h5>
+                    <label for="name">
               <span>Name</span>
               <input type="text" name="name" id="name" />
             </label>
-            <label for="email">
+                    <label for="email">
               <span>Email</span>
               <input type="email" name="email" id="email" />
             </label>
-            <label for="phone">
+                    <label for="phone">
               <span>Phone</span>
               <input type="number" name="phone" id="phone" autocomplete="off" />
             </label>
 
-            <button
-              class="checkout-button"
-              type="submit"
-              id="checkout-button"
-              value="checkout"
-            >
+                    <button class="checkout-button disabled" type="submit" id="checkout-button" value="checkout">
               checkout
             </button>
-          </form>
+                </form>
+            </div>
         </div>
-      </div>
-      <!--sopping cart end-->
+        <!--sopping cart end-->
     </nav>
     <!-- varbar end -->
 
     <!--hero section start -->
     <section class="hero" id="home">
-      <div class="mask-container">
-        <main class="content">
-          <h1>Selamat Datang di On<span>Coffee</span></h1>
-          <p>
-            Rasakan kopi otentik di OnCoffee—biji pilihan, sangrai sempurna,
-            rasa luar biasa.
-          </p>
-        </main>
-      </div>
+        <div class="mask-container">
+            <main class="content">
+                <h1>Selamat Datang di On<span>Coffee</span></h1>
+                <p>
+                    Rasakan kopi otentik di OnCoffee—biji pilihan, sangrai sempurna, rasa luar biasa.
+                </p>
+            </main>
+        </div>
     </section>
     <!--section end -->
 
     <!--abaout section start-->
     <section id="about" class="about">
-      <h2><span>Tentang</span>Kami</h2>
+        <h2><span>Tentang</span>Kami</h2>
 
-      <div class="row">
-        <div class="about-img">
-          <img src="img/tentang-kami.jpg" alt="Tentang Kami" />
+        <div class="row">
+            <div class="about-img">
+                <img src="img/tentang-kami.jpg" alt="Tentang Kami" />
+            </div>
+            <div class="content">
+                <h3>Kenapa memilih coffee kami?</h3>
+                <p>
+                    OnCoffee didirikan dengan misi untuk membawa cita rasa kopi berkualitas tinggi kepada setiap penikmat kopi.
+                </p>
+                <p>
+                    Kami percaya bahwa setiap biji kopi memiliki cerita, dan kami di sini untuk membagikan cerita itu kepada Anda.
+                </p>
+            </div>
         </div>
-        <div class="content">
-          <h3>Kenapa memilih coffee kami?</h3>
-          <p>
-            OnCoffee didirikan dengan misi untuk membawa cita rasa kopi
-            berkualitas tinggi kepada setiap penikmat kopi.
-          </p>
-          <p>
-            Kami percaya bahwa setiap biji kopi memiliki cerita, dan kami di
-            sini untuk membagikan cerita itu kepada Anda.
-          </p>
-        </div>
-      </div>
     </section>
     <!--about section end-->
 
     <!--menu section start-->
     <section id="menu" class="menu" x-data="menu">
-      <h2><span>Menu</span> Kami</h2>
-      <p>
-        Kami menawarkan berbagai macam minuman dan makanan yang disiapkan dengan
-        penuh dedikasi. Dari espresso yang kuat hingga latte yang lembut, setiap
-        pilihan di menu kami dirancang untuk memuaskan selera Anda.
-      </p>
+        <h2><span>Menu</span> Kami</h2>
+        <p>
+            Kami menawarkan berbagai macam minuman dan makanan yang disiapkan dengan penuh dedikasi. Dari espresso yang kuat hingga latte yang lembut, setiap pilihan di menu kami dirancang untuk memuaskan selera Anda.
+        </p>
 
-      <div class="row">
-        <template x-for="(item, index) in items" x-key="index">
+        <div class="row">
+            <template x-for="(item, index) in items" x-key="index">
           <div class="menu-card">
             <div class="product-icons">
               <a href="#" @click.prevent="$store.cart.add(item)">
@@ -182,7 +168,11 @@
                   <use href="img/feather-sprite.svg#shopping-cart" />
                 </svg>
               </a>
-              <a href="#" class="items-detail-button">
+              <a
+                href="#"
+                @click.prevent="yourFunctionHere"
+                class="items-detail-button"
+              >
                 <svg
                   width="24"
                   height="24"
@@ -264,85 +254,78 @@
             </div>
           </div>
         </template>
-      </div>
+        </div>
     </section>
     <!--menu section end-->
 
     <!--contact section start-->
     <section id="contact" class="contact">
-      <h2><span>Kontak</span> Kami</h2>
-      <p>
-        Hubungi kami untuk pemesanan atau informasi lebih lanjut. Tim kami siap
-        membantu Anda menikmati pengalaman kopi terbaik
-      </p>
+        <h2><span>Kontak</span> Kami</h2>
+        <p>
+            Hubungi kami untuk pemesanan atau informasi lebih lanjut. Tim kami siap membantu Anda menikmati pengalaman kopi terbaik
+        </p>
 
-      <div class="row">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d831.8956890975229!2d112.69311153116922!3d-7.333099249883272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fcbfa80312d1%3A0x8a745117ed023e5b!2sGg.%20Nakula%2C%20Balas%20Klumprik%2C%20Kec.%20Wiyung%2C%20Surabaya%2C%20Jawa%20Timur%2060222!5e0!3m2!1sid!2sid!4v1723306296621!5m2!1sid!2sid"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          class="map"
-        ></iframe>
-        <form action="">
-          <div class="input-group">
-            <i data-feather="user"></i>
-            <input type="text" placeholder="nama" />
-          </div>
-          <div class="input-group">
-            <i data-feather="mail"></i>
-            <input type="text" placeholder="email" />
-          </div>
-          <div class="input-group">
-            <i data-feather="phone"></i>
-            <input type="text" placeholder="no hp" />
-          </div>
-          <button type="submit" class="btn">Kirim pesan</button>
-        </form>
-      </div>
+        <div class="row">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d831.8956890975229!2d112.69311153116922!3d-7.333099249883272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fcbfa80312d1%3A0x8a745117ed023e5b!2sGg.%20Nakula%2C%20Balas%20Klumprik%2C%20Kec.%20Wiyung%2C%20Surabaya%2C%20Jawa%20Timur%2060222!5e0!3m2!1sid!2sid!4v1723306296621!5m2!1sid!2sid"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+            <form action="">
+                <div class="input-group">
+                    <i data-feather="user"></i>
+                    <input type="text" placeholder="nama" />
+                </div>
+                <div class="input-group">
+                    <i data-feather="mail"></i>
+                    <input type="text" placeholder="email" />
+                </div>
+                <div class="input-group">
+                    <i data-feather="phone"></i>
+                    <input type="text" placeholder="no hp" />
+                </div>
+                <button type="submit" class="btn">Kirim pesan</button>
+            </form>
+        </div>
     </section>
     <!--contact section end-->
 
     <!--footer start-->
     <footer>
-      <div class="socials">
-        <a href="#"><i data-feather="instagram"></i></a>
-        <a href="#"><i data-feather="phone"></i></a>
-        <a href="#"><i data-feather="facebook"></i></a>
-      </div>
+        <div class="socials">
+            <a href="#"><i data-feather="instagram"></i></a>
+            <a href="#"><i data-feather="phone"></i></a>
+            <a href="#"><i data-feather="facebook"></i></a>
+        </div>
 
-      <div class="links">
-        <a href="#home">Home</a>
-        <a href="#about">Tentang Kami</a>
-        <a href="#contact">Kontak</a>
-        <a href="#">Home</a>
-      </div>
+        <div class="links">
+            <a href="#home">Home</a>
+            <a href="#about">Tentang Kami</a>
+            <a href="#contact">Kontak</a>
+            <a href="#">Home</a>
+        </div>
 
-      <div class="credit">
-        <p>Createt By <a href="">Evan Atharasya</a>. | $copy; 2024.</p>
-      </div>
+        <div class="credit">
+            <p>Createt By <a href="">Evan Atharasya</a>. | $copy; 2024.</p>
+        </div>
     </footer>
     <!--footer end-->
 
     <!-- modal box items detail start -->
     <div class="modal" id="items-detail-modal">
-      <div class="modal-container">
-        <a href="#" class="close-icon"><i data-feather="x"></i></a>
-        <div class="modal-content">
-          <img src="img/menu/6.jpg" alt="Product 1" />
-          <div class="produt-content">
-            <h3>Menu 1</h3>
-            <p>kopi yang terbaik untuk semua oraang</p>
-            <div class="product-stars">
-              <i data-feather="star" class="stars-full"></i>
-              <i data-feather="star" class="stars-full"></i>
-              <i data-feather="star" class="stars-full"></i>
-              <i data-feather="star" class="stars-full"></i>
-              <i data-feather="star" class="stars-full"></i>
-            </div>
-            <div class="menu-card-price">IDR 20K<span> IDR 40K</span></div>
-            <a href="#"
-              ><i data-feather="shopping-cart"></i> <span> add to cart</span></a
+        <div class="modal-container">
+            <a href="#" class="close-icon"><i data-feather="x"></i></a>
+            <div class="modal-content">
+                <img src="img/menu/6.jpg" alt="Product 1" />
+                <div class="produt-content">
+                    <h3>Menu 1</h3>
+                    <p>kopi yang terbaik untuk semua oraang</p>
+                    <div class="product-stars">
+                        <i data-feather="star" class="stars-full"></i>
+                        <i data-feather="star" class="stars-full"></i>
+                        <i data-feather="star" class="stars-full"></i>
+                        <i data-feather="star" class="stars-full"></i>
+                        <i data-feather="star" class="stars-full"></i>
+                    </div>
+                    <div class="menu-card-price">IDR 20K<span> IDR 40K</span></div>
+                    <a href="#"><i data-feather="shopping-cart"></i> <span> add to cart</span></a
             >
           </div>
         </div>
