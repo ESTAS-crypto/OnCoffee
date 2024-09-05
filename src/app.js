@@ -1,12 +1,12 @@
 document.addEventListener("alpine:init", () => {
     Alpine.data("menu", () => ({
         items: [
-            { id: 1, name: "Espresso", img: "1.jpg", price: 45000 },
-            { id: 2, name: "Kopi Hitam", img: "2.jpg", price: 19000 },
-            { id: 3, name: "Kopi Daun", img: "3.jpg", price: 20000 },
-            { id: 4, name: "Kopi Latte", img: "4.jpg", price: 18000 },
-            { id: 5, name: "Kopi pink", img: "5.jpg", price: 25000 },
-            { id: 6, name: "KOpi Love", img: "6.jpg", price: 40000 },
+            { id: 1, name: "Midnight", img: "1.jpg", price: 45000 },
+            { id: 2, name: "Cocoa", img: "2.jpg", price: 19000 },
+            { id: 3, name: "Americano", img: "3.jpg", price: 20000 },
+            { id: 4, name: "Cap", img: "4.jpg", price: 18000 },
+            { id: 5, name: "Caramel", img: "5.jpg", price: 25000 },
+            { id: 6, name: "Mocha", img: "6.jpg", price: 40000 },
         ],
     }));
 
